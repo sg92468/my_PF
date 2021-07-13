@@ -20,9 +20,9 @@
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li class="d-flex justify-content-end nav-item mr-5">
-                <%= link_to "My page", user_path(current_user), class: 'fas fa-home nav-link text-light' %>
+                <%= link_to "My page", user_path(current_user), class: 'nav-link' %>
               </li>
-              <li class="nav-item">
+              <li class="d-flex justify-content-end nav-item mr-5">
                 <%= link_to "PF", portfolios_path, class: 'nav-link' %>
               </li>
               <li class="d-flex justify-content-end nav-item mr-5">
@@ -50,6 +50,12 @@
               </li>
             <% end %>
           </ul>
+          <% if user_signed_in? %>
+            <%= form_with(url: search_portfolios_path, local: true, method: :get, class: "search-form") do |f| %>
+              <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+              <%= f.submit "検索", class: "search-btn" %>
+            <% end %>
+          <% end %>
       </nav>
     </header>
     <main>
@@ -62,7 +68,6 @@
     <footer>
       <div class="d-flex align-items-center justify-content-center">
         <p class="mb-0">DMM webcamp</p>
-
       </div>
     </footer>
   </body>

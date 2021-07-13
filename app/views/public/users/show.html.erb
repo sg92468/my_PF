@@ -1,2 +1,58 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5 d-block justify-content-center mb-5">
+      <h2>マイページ</h2>
+      <div class="col-12">
+        <%= attachment_image_tag(@user, :image, format: "jpeg", size: "200x150", fallback: "no_image_person.jpg", class: "rounded") %>
+        <table class="table">
+          <tr>
+            <th class="table-active">名前</th>
+            <td class="align-middle"><%= @user.name %></td>
+          </tr>
+          <tr>
+            <th class="table-active">住所</th>
+            <td class="align-middle">〒<%= @user.postal_code %>　<%= @user.address %></td>
+          </tr>
+          <tr>
+            <th class="table-active">電話番号</th>
+            <td class="align-middle"><%= @user.phone_number %></td>
+          </tr>
+          <tr>
+            <th class="table-active">メール</th>
+            <td class="align-middle"><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th class="table-active">習得言語</th>
+            <td class="align-middle"><%= @user.available_language %></td>
+          </tr>
+          <tr>
+            <th class="table-active">自己紹介</th>
+            <td class="align-middle"><%= @user.information %></td>
+          </tr>
+        </table>
+        <%= link_to "編集", edit_user_path(@user), class: "btn btn-success col-3 mx-auto" %>
+      </div>
+    </div>
+
+    <div class="col-sm-7">
+      <table class="table">
+        <thead>
+          <th>PF名</th>
+          <th>使用言語</th>
+          <th>ジャンル</th>
+          <th>サイトURL</th>
+        </thead>
+        <tbody>
+        <% @portfolios.each do |portfolio| %>
+          <tr>
+            <td><%= link_to portfolio.name, portfolio_path(portfolio) %></td>
+            <td><%= portfolio.use_language %></td>
+            <td><%= portfolio.genre_i18n %></td>
+            <td><%= link_to portfolio.site_url, "#{portfolio.site_url}" %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
