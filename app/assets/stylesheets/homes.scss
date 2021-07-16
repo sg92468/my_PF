@@ -1,3 +1,25 @@
 // Place all the styles related to the Homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.logo_name_space {
+  background-color: rgba(255,255,255,0.7);
+  width: 50%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title_space {
+  display: flex;
+  align-items: center
+}
+
+.title_content {
+  background-color: rgba(0,0,0,0.5);
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
