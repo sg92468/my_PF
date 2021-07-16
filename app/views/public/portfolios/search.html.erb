@@ -18,7 +18,7 @@
             <tr>
               <td><%= link_to portfolio.name, portfolio_path(portfolio.id) %></td>
               <td><%= portfolio.use_language %></td>
-              <td><%= portfolio.genre_i18n %></td>
+              <td><%= portfolio.genre.name %></td>
               <td><%= link_to portfolio.site_url, "#{portfolio.site_url}" %></td>
             </tr>
             <% end %>
@@ -27,6 +27,7 @@
         <% end %>
       </div>
     </div>
+    <div class="d-flex justify-content-center"><%= paginate(@portfolios) %></div>
     <div class="col-md-12 d-flex justify-content-end" >
       <%= link_to '', new_portfolio_path, class: "fas fa-plus-circle fa-3x add-item" %>
     </div>

@@ -7,7 +7,7 @@ class CreatePortfolios < ActiveRecord::Migration[5.2]
       t.string :site_url
       t.string :github_url, null: false
       t.string :use_language, null: false
-      t.integer :genre, null: false
+      t.integer :genre_id, null: false
       t.string :image_id
 
       t.timestamps

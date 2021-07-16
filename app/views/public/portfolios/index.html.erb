@@ -5,24 +5,29 @@
       <div class="col-12">
         <table class="table mt-3">
           <thead>
-            <th>PF名</th>
-            <th>使用言語</th>
-            <th>ジャンル</th>
-            <th>サイトURL</th>
+            <th class="text-center">PF名</th>
+            <th class="text-center">使用言語</th>
+            <th class="text-center">ジャンル</th>
+            <th class="text-center">サイトURL</th>
+            <th class="text-center">いいね</th>
+            <th class="text-center">コメント</th>
           </thead>
           <tbody>
           <% @portfolios.each do |portfolio| %>
             <tr>
-              <td><%= link_to portfolio.name, portfolio_path(portfolio.id) %></td>
-              <td><%= portfolio.use_language %></td>
-              <td><%= portfolio.genre_i18n %></td>
-              <td><%= link_to portfolio.site_url, "#{portfolio.site_url}" %></td>
+              <td class="text-center"><%= link_to portfolio.name, portfolio_path(portfolio.id) %></td>
+              <td class="text-center"><%= portfolio.use_language %></td>
+              <td class="text-center"><%= portfolio.genre.name %></td>
+              <td class="text-center"><%= link_to portfolio.site_url, "#{portfolio.site_url}" %></td>
+              <td class="text-center"><%= portfolio.favorites.count %></td>
+              <td class="text-center"><%= portfolio.comments.count %></td>
             </tr>
           <% end %>
           </tbody>
         </table>
       </div>
     </div>
+    <div class="d-flex justify-content-center"><%= paginate(@portfolios) %></div>
     <div class="col-md-12 d-flex justify-content-end" >
       <%= link_to '', new_portfolio_path, class: "fas fa-plus-circle fa-3x add-item" %>
     </div>

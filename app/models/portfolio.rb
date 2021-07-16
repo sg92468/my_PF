@@ -2,14 +2,16 @@ class Portfolio < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :genre
   attachment :image
 
-  enum genre: {game: 0, sns: 1,  shopping: 2, matching: 3, entertainment: 4, educate: 5, location: 6, photo: 7, ec: 8, news: 9, etc: 10}
 
   validates :name, presence: true
   validates :github_url, presence: true
   validates :use_language, presence: true
-  validates :genre, presence: true
+  validates :genre_id, presence: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

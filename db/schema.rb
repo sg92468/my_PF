@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_07_09_074031) do
     t.string "site_url"
     t.string "github_url", null: false
     t.string "use_language", null: false
-    t.integer "genre", null: false
+    t.integer "genre_id", null: false
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

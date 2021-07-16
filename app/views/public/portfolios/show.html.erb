@@ -5,11 +5,11 @@
         ポートフォリオ詳細
         <% if @portfolio.favorited_by?(current_user) %>
             <%= link_to portfolio_favorites_path(@portfolio), method: :delete do %>
-              ♥<%= @portfolio.favorites.count %> 
+              ♥<%= @portfolio.favorites.count %>
             <% end %>
           <% else %>
             <%= link_to portfolio_favorites_path(@portfolio), method: :post do %>
-              ♡<%= @portfolio.favorites.count %> 
+              ♡<%= @portfolio.favorites.count %>
             <% end %>
         <% end %>
       </h2>
@@ -27,7 +27,7 @@
         <div class="col-7 d-block justify-content-center">
           <table class="table col-12">
             <tr>
-              <th class="table-active">名前</th>
+              <th class="table-active">PF名</th>
               <td class="align-middle"><%= @portfolio.name %></td>
             </tr>
             <tr>
@@ -40,7 +40,7 @@
             </tr>
             <tr>
               <th class="table-active">ジャンル</th></th>
-              <td class="align-middle"><%= @portfolio.genre_i18n %></td>
+              <td class="align-middle"><%= @portfolio.genre.name %></td>
             </tr>
             <tr>
               <th class="table-active">使用言語</th>

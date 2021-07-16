@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="rowmy-3">
     <div class="col-sm-10 d-block justify-content-center mx-auto mb-5">
       <h2>ポートフォリオ新規登録</h2>
       <div class="col-12 d-flex justify-content-center mt-3">
@@ -27,7 +27,7 @@
           </tr>
           <tr>
             <th class="table-active">ジャンル</th>
-            <td class="align-middle"><%= f.select :genre, Portfolio.genres_i18n.invert, prompt: "--選択してください", size: "30", class: "form-control" %></td>
+            <td class="align-middle"><%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "--選択してください", size: "30", class: "form-control" %></td>
           </tr>
           <tr>
             <th class="table-active">説明</th>

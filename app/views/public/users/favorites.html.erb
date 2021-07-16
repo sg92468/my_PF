@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row my-3">
-    <h2>マイページ</h2>
+    <h2>いいね一覧</h2>
     <div class="col-sm-12 d-flex">
       <div class="col-sm-5 mb-5">
         <div class="col-12">
@@ -34,7 +34,6 @@
             </tr>
           </table>
           <%= link_to "編集", edit_user_path(@user), class: "btn btn-success col-3 mx-auto" %>
-          <%= link_to "いいね一覧", "#{@user.id}/favorites", class: "btn btn-success col-3 mx-auto" %>
         </div>
       </div>
 
@@ -47,7 +46,9 @@
             <th class="text-center">サイトURL</th>
           </thead>
           <tbody>
-          <% @portfolios.each do |portfolio| %>
+          <% @favorites.each do |favorite| %>
+            <% portfolio = Portfolio.find_by(id: favorite.portfolio_id) %>
+
             <tr>
               <td class="text-center"><%= link_to portfolio.name, portfolio_path(portfolio) %></td>
               <td class="text-center"><%= portfolio.use_language %></td>
@@ -57,7 +58,6 @@
           <% end %>
           </tbody>
         </table>
-        <div class="d-flex justify-content-center"><%= paginate(@portfolios) %></div>
       </div>
     </div>
   </div>

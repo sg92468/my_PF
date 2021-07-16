@@ -50,7 +50,7 @@ class Public::PortfoliosController < ApplicationController
   private
 
   def portfolio_params
-    params.require(:portfolio).permit(:image, :name, :information, :site_url, :github_url, :use_language, :genre)
+    params.require(:portfolio).permit(:image, :name, :information, :site_url, :github_url, :use_language, :genre_id)
   end
 
 end

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :portfolios do
-      resource :favorites, only: [:create, :destroy]
+      resources :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
       collection do
         get 'search'
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     end
 
     resources :users, only: [:show, :edit, :update]
+    get "users/:id/favorites" => "users#favorites"
 
   end
 

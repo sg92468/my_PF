@@ -83,17 +83,3 @@ ja:
     unlocks:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
-  enums:
-    portfolio:
-      genre:
-        game: ゲーム
-        sns: ＳＮＳ
-        shopping: ショッピング
-        matching: マッチング
-        entertainment: 娯楽
-        educate: 教育
-        location: 位置情報
-        photo: 写真
-        ec: ＥＣ
-        news: ニュース
-        etc: その他
