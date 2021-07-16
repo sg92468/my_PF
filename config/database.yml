@@ -22,4 +22,11 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: <%= ENV['re_en'] %>
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8md4
+  collation: utf8mb4_general_ci
+  host: <%= ENV['re-en-mysql-server.cqjh76mog496.ap-northeast-1.rds.amazonaws.com'] %>
+  username: <%= ENV['root'] %>
+  password: <%= ENV['St2My1tH9'] %>
