@@ -17,8 +17,21 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      resources :follow_companies, only: [:destroy, :show, :index]
+      post '/follow_requests/:id' => 'follow_requests#allow', as: 'allow'
+      resources :follow_requests, only: [:index, :show, :destroy]
+    end
     get "users/:id/favorites" => "users#favorites"
+
+  end
+
+  namespace :company do
+    resources :companies, only: [:show, :edit, :update] do
+      resource :follow_requests, only: [:create, :destroy]
+    end
+    resources :users, only: [:index, :show]
+    resources :portfolios, only: [:index, :show]
 
   end
 
