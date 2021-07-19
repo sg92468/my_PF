@@ -19,7 +19,7 @@ class Portfolio < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      Portfolio.where(['name LIKE(?) OR genre LIKE(?) OR use_language LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])
+      Portfolio.where(['name LIKE(?) OR genre_id LIKE(?) OR use_language LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])
     else
       Portfolio.includes(:user).order('created_at DESC')
     end
