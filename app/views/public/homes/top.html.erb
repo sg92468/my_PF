@@ -1,0 +1,20 @@
+<div class="cording-image d-flex">
+  <div class="top logo_name_space">
+  <%= image_tag 'logo_name.png', size: "200x150" %>
+  </div>
+  <div class="top title_space col-6">
+    <div class="top title_content">
+      <h4>エンジニアの次なる一歩へ</h4>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row d-block my-5 mx-auto text-center">
+    <div class="col mb-3">
+      <%= link_to "アカウント作成", new_user_registration_path, class: 'btn btn-primary col-3' %>
+      <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-primary col-3 ml-3' %>
+    </div>
+    <!--<div>企業は<%= link_to "こちら", new_company_registration_path %>から</div>-->
+  </div>
+</div>

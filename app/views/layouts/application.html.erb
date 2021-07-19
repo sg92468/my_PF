@@ -10,6 +10,65 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <%= link_to image_tag('logo.png', :size =>'100x50', class: "navbar-brand img-fluid"), root_path %>
+        <button class="navbar-toggler justify-content-end pt-2 border border-secondary border-5 bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon navbar-light"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li class="d-flex justify-content-end nav-item mr-5">
+                <%= link_to "My page", user_path(current_user), class: 'nav-link' %>
+              </li>
+              <li class="d-flex justify-content-end nav-item mr-5">
+                <%= link_to "PF", portfolios_path, class: 'nav-link' %>
+              </li>
+              <li class="d-flex justify-content-end nav-item mr-5">
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+              </li>
+            <% elsif company_signed_in? %>
+              <li class="d-flex justify-content-end nav-item mr-5">
+                <%= link_to "My page", company_path(current_company), class: 'nav-link' %>
+              </li>
+              <li class="d-flex justify-content-end nav-item mr-5">
+                <%= link_to "PF", portfolios_path, class: 'nav-link' %>
+              </li>
+              <li class="d-flex justify-content-end nav-item mr-5">
+                <%= link_to "Log out", destroy_company_session_path, method: :delete, class: 'nav-link' %>
+              </li>
+            <% else %>
+              <li class="d-flex justify-content-end nav-item mr-5">
+                <%= link_to "About", about_path, class: 'nav-link' %>
+              </li>
+              <li class="d-flex justify-content-end nav-item mr-5">
+                <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>
+              </li>
+              <li class="d-flex justify-content-end nav-item mr-5">
+                <%= link_to "Sign in", new_user_session_path, class: 'nav-link' %>
+              </li>
+            <% end %>
+          </ul>
+          <% if user_signed_in? %>
+            <%= form_with(url: search_portfolios_path, local: true, method: :get, class: "search-form") do |f| %>
+              <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+              <%= f.submit "検索", class: "search-btn" %>
+            <% end %>
+          <% end %>
+      </nav>
+    </header>
+    <main>
+      <div class="flash-message">
+        <%= flash[:notice] %>
+      </div>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <div class="d-flex align-items-center justify-content-center">
+        <p class="mb-0">DMM webcamp</p>
+      </div>
+    </footer>
   </body>
 </html>

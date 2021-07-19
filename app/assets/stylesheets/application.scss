@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+ header {
+  background: lightcyan;
+ }
+
+ footer {
+  background: lightcyan;
+ }
+
+.cording-image {
+ background-image: image-url("cording.jpg");
+ height: 400px;
+ background-size: cover;
+}
+

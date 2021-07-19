@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 d-block justify-content-center mb-5">
+      <h2>
+        ポートフォリオ詳細
+        <% if @portfolio.favorited_by?(current_user) %>
+            <%= link_to portfolio_favorites_path(@portfolio), method: :delete do %>
+              ♥<%= @portfolio.favorites.count %>
+            <% end %>
+          <% else %>
+            <%= link_to portfolio_favorites_path(@portfolio), method: :post do %>
+              ♡<%= @portfolio.favorites.count %>
+            <% end %>
+        <% end %>
+      </h2>
+      <div class="col-12 d-flex">
+        <div class="col-5">
+        <%= attachment_image_tag(@portfolio, :image, format: "jpeg", fallback: "no_image_photo.jpg", class: "rounded mb-3 col-12") %>
+
+        <% if @portfolio.user == current_user %>
+        <div class="col d-flex justify-content-center">
+          <%= link_to "編集", edit_portfolio_path(@portfolio), class: "btn btn-success col-3 " %>
+          <%= link_to "削除", portfolio_path(@portfolio), method: :delete, class: "btn btn-danger col-3 ml-3", data: { confirm: '本当に消しますか?' } %>
+        </div>
+        <% end %>
+        </div>
+        <div class="col-7 d-block justify-content-center">
+          <table class="table col-12">
+            <tr>
+              <th class="table-active">PF名</th>
+              <td class="align-middle"><%= @portfolio.name %></td>
+            </tr>
+            <tr>
+              <th class="table-active">サイト URL</th>
+              <td class="align-middle"><%= link_to @portfolio.site_url, "#{@portfolio.site_url}" %></td>
+            </tr>
+            <tr>
+              <th class="table-active">github URL</th>
+              <td class="align-middle"><%= link_to @portfolio.github_url, "#{@portfolio.github_url}" %></td>
+            </tr>
+            <tr>
+              <th class="table-active">ジャンル</th></th>
+              <td class="align-middle"><%= @portfolio.genre.name %></td>
+            </tr>
+            <tr>
+              <th class="table-active">使用言語</th>
+              <td class="align-middle"><%= @portfolio.use_language %></td>
+            </tr>
+            <tr>
+              <th class="table-active">説明</th>
+              <td class="align-middle"><%= @portfolio.information %></td>
+            </tr>
+          </table>
+          <div class="comments col-12 mb-3">
+            <p>コメント件数：<%= @portfolio.comments.count %></p>
+            <% @portfolio.comments.each do |portfolio_comment| %>
+              <%= attachment_image_tag(@comment.user, :image, format: "jpeg", size: "40x30", fallback: "no_image_person.jpg", class: "rounded") %>
+              <%= portfolio_comment.user.name %>
+              <%= portfolio_comment.created_at.strftime('%Y/%m/%d') %><%= portfolio_comment.comment %>
+              <% if portfolio_comment.user == current_user %>
+              <%= link_to "削除", portfolio_comment_path(portfolio_comment.portfolio, portfolio_comment), method: :delete %>
+              <% end %>
+            <% end %>
+            <div class="new-comment">
+            <%= form_with(model:[@portfolio, @comment], local: true) do |f| %>
+              <%= f.text_area :comment, rows:'5',  placeholder: "コメントをここに", class: "col-12" %>
+              <%= f.submit "送信する" %>
+            <% end %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
