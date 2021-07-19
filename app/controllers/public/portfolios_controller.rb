@@ -44,7 +44,7 @@ class Public::PortfoliosController < ApplicationController
   end
 
   def search
-    @portfolios = Portfolio.search(params[:keyword])
+    @portfolios = Portfolio.search(params[:keyword]).page(params[:page]).per(10).reverse_order
   end
 
   private
