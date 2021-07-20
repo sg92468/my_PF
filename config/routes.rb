@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       resource :follow_requests, only: [:create, :destroy]
     end
     resources :users, only: [:index, :show]
-    resources :portfolios, only: [:index, :show]
+    resources :portfolios, only: [:index, :show, :search]
 
   end
 

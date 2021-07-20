@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row my-3">
+    <h2>ユーザー詳細</h2>
+    <div class="col-sm-12 d-flex">
+      <div class="col-sm-5 mb-5">
+        <div class="col-12">
+          <%= attachment_image_tag(@user, :image, format: "jpeg", size: "200x150", fallback: "no_image_person.jpg", class: "rounded") %>
+          <table class="table">
+            <tr>
+              <th class="table-active">名前</th>
+              <td class="align-middle"><%= @user.name %></td>
+            </tr>
+            <% if @user == current_user %>
+            <tr>
+              <th class="table-active">住所</th>
+              <td class="align-middle">〒<%= @user.postal_code %>　<%= @user.address %></td>
+            </tr>
+            <tr>
+              <th class="table-active">電話番号</th>
+              <td class="align-middle"><%= @user.phone_number %></td>
+            </tr>
+            <tr>
+              <th class="table-active">メール</th>
+              <td class="align-middle"><%= @user.email %></td>
+            </tr>
+            <% end %>
+            <tr>
+              <th class="table-active">習得言語</th>
+              <td class="align-middle"><%= @user.available_language %></td>
+            </tr>
+            <tr>
+              <th class="table-active">自己紹介</th>
+              <td class="align-middle"><%= @user.information %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <table class="table">
+          <thead>
+            <th class="text-center">PF名</th>
+            <th class="text-center">使用言語</th>
+            <th class="text-center">ジャンル</th>
+            <th class="text-center">サイトURL</th>
+          </thead>
+          <tbody>
+          <% @portfolios.each do |portfolio| %>
+            <tr>
+              <td class="text-center"><%= link_to portfolio.name, portfolio_path(portfolio) %></td>
+              <td class="text-center"><%= portfolio.use_language %></td>
+              <td class="text-center"><%= portfolio.genre.name %></td>
+              <td class="text-center"><%= link_to portfolio.site_url, "#{portfolio.site_url}" %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center"><%= paginate(@portfolios) %></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row my-3">
+    <h2>マイページ</h2>
+    <div class="col-sm-12 d-flex">
+      <div class="col-sm-10 mb-5">
+        <div class="col-12">
+          <table class="table">
+            <tr>
+              <th class="table-active">企業名</th>
+              <td class="align-middle"><%= @company.name %></td>
+            </tr>
+            <tr>
+              <th class="table-active">企業名(カナ)</th>
+              <td class="align-middle"><%= @company.kana_name %></td>
+            </tr>
+            <tr>
+              <th class="table-active">電話番号</th>
+              <td class="align-middle"><%= @company.phone_number %></td>
+            </tr>
+            <tr>
+              <th class="table-active">サイトURL</th>
+              <td class="align-middle"><%= @company.website %></td>
+            </tr>
+          </table>
+          <%= link_to "編集", edit_company_company_path(@company), class: "btn btn-success col-3 mx-auto" %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
