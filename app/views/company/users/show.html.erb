@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row my-3">
-    <h2>ユーザー詳細</h2>
     <div class="col-sm-12 d-flex">
       <div class="col-sm-5 mb-5">
         <div class="col-12">
@@ -33,6 +32,13 @@
               <td class="align-middle"><%= @user.information %></td>
             </tr>
           </table>
+          <% if current_company.already_followed?(@user) %>
+          すでにフォロー済みです
+          <% elsif current_company.already_requested?(@user) %>
+          <%= link_to "フォローリクエスト取消", company_user_follow_requests_path(user_id:@user.id), method: :delete, class: "btn btn-danger" %>
+          <% else %>
+          <%= link_to "フォローリクエスト送信", company_user_follow_requests_path(user_id:@user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
         </div>
       </div>
 

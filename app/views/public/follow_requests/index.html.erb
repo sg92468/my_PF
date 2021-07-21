@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 d-block justify-content-center mt-3 mb-5">
+      <h2>フォローリクエスト一覧</h2>
+      <div class="col-12">
+        <table class="table mt-3">
+          <thead>
+            <th class="text-center">企業名</th>
+            <th class="text-center">Webサイト</th>
+            <th></th>
+            <th></th>
+          </thead>
+          <tbody>
+          <% @requests.each do |request| %>
+            <tr>
+              <td class="text-center"><%= link_to request.company.name, company_company_path(request.company.id) %></td>
+              <td class="text-center"><%= request.company.website %></td>
+              <td class="text-center"><%= link_to "フォロー承認", user_allow_path(user_id:current_user.id, id:request.id), method: :post %></td>
+              <td class="text-center"><%= link_to "フォロー拒否", user_follow_request_path(user_id:current_user.id, id:request.id), method: :delete %></td>
+              <td class="text-center"></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
