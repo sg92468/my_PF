@@ -9,20 +9,36 @@
               <th class="table-active">名前</th>
               <td class="align-middle"><%= @user.name %></td>
             </tr>
-            <% if @user == current_user %>
             <tr>
               <th class="table-active">住所</th>
-              <td class="align-middle">〒<%= @user.postal_code %>　<%= @user.address %></td>
+              <td class="align-middle">
+                <% if current_company.already_followed?(@user) %>
+                〒<%= @user.postal_code %>　<%= @user.address %>
+                <% else %>
+                フォロー承認後に確認できます
+                <% end %>
+                </td>
             </tr>
             <tr>
               <th class="table-active">電話番号</th>
-              <td class="align-middle"><%= @user.phone_number %></td>
+              <td class="align-middle">
+                <% if current_company.already_followed?(@user) %>
+                <%= @user.phone_number %>
+                <% else %>
+                フォロー承認後に確認できます
+                <% end %>
+                </td>
             </tr>
             <tr>
               <th class="table-active">メール</th>
-              <td class="align-middle"><%= @user.email %></td>
+              <td class="align-middle">
+                <% if current_company.already_followed?(@user) %>
+                <%= @user.email %>
+                <% else %>
+                フォロー承認後に確認できます
+                <% end %>
+                </td>
             </tr>
-            <% end %>
             <tr>
               <th class="table-active">習得言語</th>
               <td class="align-middle"><%= @user.available_language %></td>
