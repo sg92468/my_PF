@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row my-3">
-    <h2>マイページ</h2>
     <div class="col-sm-12 d-flex">
       <div class="col-sm-5 mb-5">
         <div class="col-12">
@@ -10,20 +9,36 @@
               <th class="table-active">名前</th>
               <td class="align-middle"><%= @user.name %></td>
             </tr>
-            <% if @user == current_user %>
             <tr>
               <th class="table-active">住所</th>
-              <td class="align-middle">〒<%= @user.postal_code %>　<%= @user.address %></td>
+              <td class="align-middle">
+                <% if current_company.already_followed?(@user) %>
+                〒<%= @user.postal_code %>　<%= @user.address %>
+                <% else %>
+                フォロー承認後に確認できます
+                <% end %>
+                </td>
             </tr>
             <tr>
               <th class="table-active">電話番号</th>
-              <td class="align-middle"><%= @user.phone_number %></td>
+              <td class="align-middle">
+                <% if current_company.already_followed?(@user) %>
+                <%= @user.phone_number %>
+                <% else %>
+                フォロー承認後に確認できます
+                <% end %>
+                </td>
             </tr>
             <tr>
               <th class="table-active">メール</th>
-              <td class="align-middle"><%= @user.email %></td>
+              <td class="align-middle">
+                <% if current_company.already_followed?(@user) %>
+                <%= @user.email %>
+                <% else %>
+                フォロー承認後に確認できます
+                <% end %>
+                </td>
             </tr>
-            <% end %>
             <tr>
               <th class="table-active">習得言語</th>
               <td class="align-middle"><%= @user.available_language %></td>
@@ -33,10 +48,13 @@
               <td class="align-middle"><%= @user.information %></td>
             </tr>
           </table>
-          <%= link_to "編集", edit_user_path(@user), class: "btn btn-success col-3 mx-auto" %>
-          <%= link_to "いいね一覧", "#{@user.id}/favorites", class: "btn btn-success col-3 mx-auto" %>
-          <%= link_to "フォローリクエスト一覧", "#{@user.id}/follow_requests", class: "btn btn-success col-3 mx-auto" %>
-          <%= link_to "フォロー一覧", "#{@user.id}/follow_companys", class: "btn btn-success col-3 mx-auto" %>
+          <% if current_company.already_followed?(@user) %>
+          すでにフォロー済みです
+          <% elsif current_company.already_requested?(@user) %>
+          <%= link_to "フォローリクエスト取消", company_user_follow_requests_path(user_id:@user.id), method: :delete, class: "btn btn-danger" %>
+          <% else %>
+          <%= link_to "フォローリクエスト送信", company_user_follow_requests_path(user_id:@user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
         </div>
       </div>
 

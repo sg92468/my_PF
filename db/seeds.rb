@@ -8,11 +8,11 @@
 
 5.times do |n|
   Company.create!(
-    name: 'テスト#{n + 1}',
-    kana_name: 'テスト#{n + 1}',
-    phone_number: '1111111111',
-    email: 'test#{n + 1}@test.com',
-    website: 'https://github.com/',
-    encrypted_password: '111111'
+    name: "テスト#{n + 1}",
+    kana_name: "テスト#{n + 1}",
+    phone_number: "1111111111",
+    email: "test#{n + 1}@test.com",
+    website: "https://github.com/",
+    password: "111111"
   )
 end

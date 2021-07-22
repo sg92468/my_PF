@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :companies
+  devise_for :companies, :controllers => {
+    :sessions => 'companies/sessions'
+  }
+
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
@@ -27,11 +30,11 @@ Rails.application.routes.draw do
   end
 
   namespace :company do
-    resources :companies, only: [:show, :edit, :update] do
+    resources :companies, only: [:show, :edit, :update]
+    resources :users, only: [:index, :show] do
       resource :follow_requests, only: [:create, :destroy]
     end
-    resources :users, only: [:index, :show]
-    resources :portfolios, only: [:index, :show]
+    resources :portfolios, only: [:index, :show, :search]
 
   end
 

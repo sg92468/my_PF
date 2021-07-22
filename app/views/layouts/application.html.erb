@@ -30,10 +30,13 @@
               </li>
             <% elsif company_signed_in? %>
               <li class="d-flex justify-content-end nav-item mr-5">
-                <%= link_to "My page", company_path(current_company), class: 'nav-link' %>
+                <%= link_to "My page", company_company_path(current_company), class: 'nav-link' %>
               </li>
               <li class="d-flex justify-content-end nav-item mr-5">
-                <%= link_to "PF", portfolios_path, class: 'nav-link' %>
+                <%= link_to "user", company_users_path, class: 'nav-link' %>
+              </li>
+              <li class="d-flex justify-content-end nav-item mr-5">
+                <%= link_to "PF", company_portfolios_path, class: 'nav-link' %>
               </li>
               <li class="d-flex justify-content-end nav-item mr-5">
                 <%= link_to "Log out", destroy_company_session_path, method: :delete, class: 'nav-link' %>
@@ -59,8 +62,17 @@
       </nav>
     </header>
     <main>
-      <div class="flash-message">
-        <%= flash[:notice] %>
+      <div class="col-lg-10 mx-auto">
+        <% if flash[:notice] %>
+        <div class="alert alert-info">
+          <%= flash[:notice] %>
+        </div>
+        <% end %>
+        <% if flash[:alert] %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+        <% end %>
       </div>
       <%= yield %>
     </main>

@@ -14,6 +14,10 @@
             <td class="align-middle"><%= f.text_field :name, placeholder: "名前", size: "30", class: "form-control" %></td>
           </tr>
           <tr>
+            <th class="table-active">名前カナ</th>
+            <td class="align-middle"><%= f.text_field :kana_name, placeholder: "ナマエ", size: "30", class: "form-control" %></td>
+          </tr>
+          <tr>
             <th class="table-active">郵便番号</th>
             <td class="align-middle"><%= f.text_field :postal_code, placeholder: "0000000", size: "30", class: "form-control" %></td>
           </tr>
