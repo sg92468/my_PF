@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 d-block justify-content-center mt-3 mb-5">
+      <h2>ユーザー一覧</h2>
+      <div class="col-12">
+        <table class="table mt-3">
+          <thead>
+            <th class="text-center">ユーザー名</th>
+            <th class="text-center">習得言語</th>
+            <th class="text-center">PF投稿数</th>
+            <th class="text-center">フォロワー数</th>
+          </thead>
+          <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td class="text-center"><%= link_to user.name, company_user_path(user.id) %></td>
+              <td class="text-center"><%= user.available_language %></td>
+              <td class="text-center"><%= user.portfolios.count %></td>
+              <td class="text-center"></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center"><%= paginate(@users) %></div>
+  </div>
+</div>

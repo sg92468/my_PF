@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 d-block justify-content-center mx-auto mb-5">
+      <h2>マイページ編集画面</h2>
+      <div class="col-12 d-flex justify-content-center mt-3">
+        <%= form_with model: [:company, @company], local:true do |f| %>
+        <table class="table">
+          <tr>
+            <th class="table-active">名前</th>
+            <td class="align-middle"><%= f.text_field :name, placeholder: "名前", size: "30", class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th class="table-active">名前カナ</th>
+            <td class="align-middle"><%= f.text_field :kana_name, placeholder: "名前", size: "30", class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th class="table-active">サイトURL</th>
+            <td class="align-middle"><%= f.text_field :website, placeholder: "https://...", size: "30", class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th class="table-active">電話番号</th>
+            <td class="align-middle"><%= f.text_field :phone_number, placeholder: "1234567890", size: "30", class: "form-control" %></td>
+          </tr>
+        </table>
+        <div class="actions text-center">
+            <%= f.submit "保存", class: "btn btn-success col-4 mt-2" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

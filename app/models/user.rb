@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :favorite_portfolios, through: :favorites, source: :portfolio
   has_many :comments, dependent: :destroy
   has_many :follow_requests, dependent: :destroy
-  has_many :follow_companys, dependent: :destroy
+  has_many :follow_companies, dependent: :destroy
 
   attachment :image
 
