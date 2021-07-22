@@ -58,6 +58,12 @@
               <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
               <%= f.submit "検索", class: "search-btn" %>
             <% end %>
+          <% elsif company_signed_in? %>
+            <%= form_with(url: company_search_path, local: true, method: :get, class: "search-form") do |f| %>
+              <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+              <%= f.select 'search[model]', options_for_select({ "user" => "user", "PF" => "portfolio" }) %>
+              <%= f.submit :"検索", class: "btn btn-success" %>
+            <% end %>
           <% end %>
       </nav>
     </header>

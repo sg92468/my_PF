@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12 d-block justify-content-center mb-5">
       <h2>
-        ポートフォリオ詳細
+        <%= @portfolio.name %>
         <% if @portfolio.favorited_by?(current_user) %>
             <%= link_to portfolio_favorites_path(@portfolio), method: :delete do %>
               ♥<%= @portfolio.favorites.count %>
@@ -27,8 +27,8 @@
         <div class="col-7 d-block justify-content-center">
           <table class="table col-12">
             <tr>
-              <th class="table-active">PF名</th>
-              <td class="align-middle"><%= @portfolio.name %></td>
+              <th class="table-active">作成者</th>
+              <td class="align-middle"><%= @portfolio.user.name %></td>
             </tr>
             <tr>
               <th class="table-active">サイト URL</th>

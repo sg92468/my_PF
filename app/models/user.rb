@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :favorite_portfolios, through: :favorites, source: :portfolio
   has_many :comments, dependent: :destroy
   has_many :follow_requests, dependent: :destroy
-  has_many :follow_companies, dependent: :destroy
+  has_many :follow_companys, dependent: :destroy
 
   attachment :image
 
@@ -22,5 +22,12 @@ class User < ApplicationRecord
   # validates :email, presence: true, uniqueness: true
   # validates :postal_code, format: { with: NUMBER_REGEXP }
   # validates :phone_number, format: { with: NUMBER_REGEXP }
+  def self.search(search)
+    if search != ""
+      User.where(['name LIKE(?) OR available_language LIKE(?)', "%#{search}%", "%#{search}%"])
+    else
+      User.all
+    end
+  end
 
 end
