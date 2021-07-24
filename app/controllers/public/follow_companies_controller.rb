@@ -1,6 +1,6 @@
 class Public::FollowCompaniesController < ApplicationController
   def index
-    @followers = current_user.follow_companies.all
+    @followers = current_user.follow_companys.all
   end
 
   def destroy

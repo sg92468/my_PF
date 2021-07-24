@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 d-block justify-content-center mt-3 mb-5">
-      <h2>フォロー一覧</h2>
+      <h2>フォロー 一覧</h2>
       <div class="col-12">
         <table class="table mt-3">
           <thead>
@@ -11,7 +11,7 @@
           <tbody>
           <% @followers.each do |follow| %>
             <tr>
-              <td class="text-center"><%= link_to follow.company.name, company_company_path(follow.company.id) %></td>
+              <td class="text-center"><%= link_to follow.company.name, company_path(follow.company.id) %></td>
               <td class="text-center"><%= link_to "フォロー解除", user_follow_company_path(user_id:current_user.id, id:follow.id), method: :delete %></td>
             </tr>
           <% end %>

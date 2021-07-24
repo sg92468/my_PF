@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     end
     get "users/:id/favorites" => "users#favorites"
 
+    resources :companies, only: [:show]
   end
 
   namespace :company do

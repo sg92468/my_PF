@@ -13,8 +13,8 @@
           <tbody>
           <% @requests.each do |request| %>
             <tr>
-              <td class="text-center"><%= link_to request.company.name, company_company_path(request.company.id) %></td>
-              <td class="text-center"><%= request.company.website %></td>
+              <td class="text-center"><%= link_to request.company.name, company_path(request.company.id) %></td>
+              <td class="text-center"><%= link_to request.company.website, "#{request.company.website}" %></td>
               <td class="text-center"><%= link_to "フォロー承認", user_allow_path(user_id:current_user.id, id:request.id), method: :post %></td>
               <td class="text-center"><%= link_to "フォロー拒否", user_follow_request_path(user_id:current_user.id, id:request.id), method: :delete %></td>
               <td class="text-center"></td>

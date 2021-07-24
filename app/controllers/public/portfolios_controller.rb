@@ -21,6 +21,7 @@ class Public::PortfoliosController < ApplicationController
 
   def show
     @portfolio = Portfolio.find(params[:id])
+    @comments = @portfolio.comments.page(params[:page]).per(5).reverse_order
     @comment = Comment.new
   end
 
@@ -40,7 +41,7 @@ class Public::PortfoliosController < ApplicationController
   def destroy
     @portfolio = Portfolio.find(params[:id])
     @portfolio.destroy
-    redirect_to portfolios_path
+    redirect_to user_path(@portfolio.user)
   end
 
   def search

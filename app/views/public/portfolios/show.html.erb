@@ -53,14 +53,26 @@
           </table>
           <div class="comments col-12 mb-3">
             <p>コメント件数：<%= @portfolio.comments.count %></p>
-            <% @portfolio.comments.each do |portfolio_comment| %>
-              <%= attachment_image_tag(@comment.user, :image, format: "jpeg", size: "40x30", fallback: "no_image_person.jpg", class: "rounded") %>
-              <%= portfolio_comment.user.name %>
-              <%= portfolio_comment.created_at.strftime('%Y/%m/%d') %><%= portfolio_comment.comment %>
+            <% @comments.each do |portfolio_comment| %>
+            <div class="col-12 bg-light my-1 d-flex rounded">
+              <div class="col-10">
+                <div class="col">
+                <%= attachment_image_tag(portfolio_comment.user, :image, size: "40x30", fallback: "no_image_person.jpg", class: "rounded") %>
+                <%= portfolio_comment.user.name %>
+                　日時：<%= portfolio_comment.created_at.strftime('%Y/%m/%d') %>
+                </div>
+                <div class="col bg-white mb-1">
+                <%= portfolio_comment.comment %>
+                </div>
+              </div>
               <% if portfolio_comment.user == current_user %>
-              <%= link_to "削除", portfolio_comment_path(portfolio_comment.portfolio, portfolio_comment), method: :delete %>
+              <div class="col-2 d-flex align-items-center">
+                <%= link_to "削除", portfolio_comment_path(portfolio_comment.portfolio, portfolio_comment), method: :delete, class: "btn btn-danger" %>
+                </div>
+              </div>
               <% end %>
             <% end %>
+            <div class="d-flex justify-content-center"><%= paginate(@comments) %></div>
             <div class="new-comment">
             <%= form_with(model:[@portfolio, @comment], local: true) do |f| %>
               <%= f.text_area :comment, rows:'5',  placeholder: "コメントをここに", class: "col-12" %>

@@ -56,7 +56,7 @@
           <% if user_signed_in? %>
             <%= form_with(url: search_portfolios_path, local: true, method: :get, class: "search-form") do |f| %>
               <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-              <%= f.submit "検索", class: "search-btn" %>
+              <%= f.submit "検索", class: "search-btn btn-success" %>
             <% end %>
           <% elsif company_signed_in? %>
             <%= form_with(url: company_search_path, local: true, method: :get, class: "search-form") do |f| %>
@@ -82,6 +82,15 @@
       </div>
       <%= yield %>
     </main>
+
+    <% if user_signed_in? %>
+    <div>
+      <div></div>
+      <div class="fixed-bottom mb-4 mr-3 d-flex justify-content-end">
+      <%= link_to '', new_portfolio_path, class: "fas fa-plus-circle fa-3x" %>
+      </div>
+    </div>
+    <% end %>
 
     <footer class="fixed-bottom">
       <div class="d-flex align-items-center justify-content-center">
