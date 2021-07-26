@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :portfolios do
-      resources :favorites, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
       collection do
         get 'search'
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     end
     get "users/:id/favorites" => "users#favorites"
 
+    resources :companies, only: [:show]
   end
 
   namespace :company do
@@ -34,8 +35,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show] do
       resource :follow_requests, only: [:create, :destroy]
     end
-    resources :portfolios, only: [:index, :show, :search]
-
+    resources :portfolios, only: [:index, :show]
+    get '/search' => 'searches#search', as: 'search'
   end
 
 

@@ -1,7 +1,6 @@
 class Company::PortfoliosController < ApplicationController
   before_action :authenticate_company!
 
-
   def index
     @portfolios = Portfolio.page(params[:page]).per(10).reverse_order
   end
@@ -9,10 +8,6 @@ class Company::PortfoliosController < ApplicationController
   def show
     @portfolio = Portfolio.find(params[:id])
     @comment = Comment.new
-  end
-
-  def search
-    @portfolios = Portfolio.search(params[:keyword]).page(params[:page]).per(10).reverse_order
   end
 
   private

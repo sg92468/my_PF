@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 d-block justify-content-center mt-3 mb-5">
+      <h2>検索結果</h2>
+      <div class="col-12">
+        <% if @datas == [] %>
+        <h3 class = "seach-result mt-5">検索結果はありません</h3>
+        <% else %>
+        <% if @model == "user" %>
+        <table class="table mt-3">
+          <thead>
+            <th class="text-center">ユーザー名</th>
+            <th class="text-center">習得言語</th>
+            <!--経歴関係について追加予定-->
+            <th class="text-center">PF投稿数</th>
+            <th class="text-center">フォロワー数</th>
+          </thead>
+          <tbody>
+          <% @datas.each do |user| %>
+            <tr>
+              <td class="text-center"><%= link_to user.name, company_user_path(user.id) %></td>
+              <td class="text-center"><%= user.available_language %></td>
+            <!--経歴関係について追加予定-->
+              <td class="text-center"><%= user.portfolios.count %></td>
+              <td class="text-center"><%= user.follow_companys.count %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+        <% elsif @model == "portfolio" %>
+        <table class="table mt-3">
+          <thead>
+            <th class="text-center">PF名</th>
+            <th class="text-center">使用言語</th>
+            <th class="text-center">ジャンル</th>
+            <th class="text-center">サイトURL</th>
+            <th class="text-center">いいね</th>
+            <th class="text-center">コメント</th>
+          </thead>
+          <tbody>
+            <% @datas.each do |portfolio| %>
+            <tr>
+              <td class="text-center"><%= link_to portfolio.name, company_portfolio_path(portfolio.id) %></td>
+              <td class="text-center"><%= portfolio.use_language %></td>
+              <td class="text-center"><%= portfolio.genre.name %></td>
+              <td class="text-center"><%= link_to portfolio.site_url, "#{portfolio.site_url}" %></td>
+              <td class="text-center"><%= portfolio.favorites.count %></td>
+              <td class="text-center"><%= portfolio.comments.count %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="mx-auto"><%= paginate(@datas) %></div>
+  </div>
+</div>

@@ -19,7 +19,7 @@
             </tr>
             <tr>
               <th class="table-active">サイトURL</th>
-              <td class="align-middle"><%= @company.website %></td>
+              <td class="align-middle"><%= link_to @company.website, "#{@company.website}" %></td>
             </tr>
           </table>
           <%= link_to "編集", edit_company_company_path(@company), class: "btn btn-success col-3 mx-auto" %>

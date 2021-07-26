@@ -27,9 +27,6 @@
         </table>
       </div>
     </div>
-    <div class="d-flex justify-content-center"><%= paginate(@portfolios) %></div>
-    <div class="col-md-12" >
-      <%= link_to '', new_portfolio_path, class: "fas fa-plus-circle fa-3x add-item fixed-bottom mb-4 mr-3 text-right" %>
-    </div>
+    <div class="mx-auto"><%= paginate(@portfolios) %></div>
   </div>
 </div>

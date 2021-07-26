@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MyPf</title>
+    <title>RE: EN</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -20,43 +20,49 @@
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li class="d-flex justify-content-end nav-item mr-5">
-                <%= link_to "My page", user_path(current_user), class: 'nav-link' %>
+                <%= link_to "マイページ", user_path(current_user), class: 'nav-link' %>
               </li>
               <li class="d-flex justify-content-end nav-item mr-5">
                 <%= link_to "PF", portfolios_path, class: 'nav-link' %>
               </li>
               <li class="d-flex justify-content-end nav-item mr-5">
-                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
               </li>
             <% elsif company_signed_in? %>
               <li class="d-flex justify-content-end nav-item mr-5">
-                <%= link_to "My page", company_company_path(current_company), class: 'nav-link' %>
+                <%= link_to "マイページ", company_company_path(current_company), class: 'nav-link' %>
               </li>
               <li class="d-flex justify-content-end nav-item mr-5">
-                <%= link_to "user", company_users_path, class: 'nav-link' %>
+                <%= link_to "ユーザー", company_users_path, class: 'nav-link' %>
               </li>
               <li class="d-flex justify-content-end nav-item mr-5">
                 <%= link_to "PF", company_portfolios_path, class: 'nav-link' %>
               </li>
               <li class="d-flex justify-content-end nav-item mr-5">
-                <%= link_to "Log out", destroy_company_session_path, method: :delete, class: 'nav-link' %>
+                <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class: 'nav-link' %>
               </li>
             <% else %>
               <li class="d-flex justify-content-end nav-item mr-5">
-                <%= link_to "About", about_path, class: 'nav-link' %>
+                <%= link_to "アバウト", about_path, class: 'nav-link' %>
               </li>
               <li class="d-flex justify-content-end nav-item mr-5">
-                <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>
+                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
               </li>
               <li class="d-flex justify-content-end nav-item mr-5">
-                <%= link_to "Sign in", new_user_session_path, class: 'nav-link' %>
+                <%= link_to "サインイン", new_user_session_path, class: 'nav-link' %>
               </li>
             <% end %>
           </ul>
           <% if user_signed_in? %>
             <%= form_with(url: search_portfolios_path, local: true, method: :get, class: "search-form") do |f| %>
               <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-              <%= f.submit "検索", class: "search-btn" %>
+              <%= f.submit "検索", class: "search-btn btn-success" %>
+            <% end %>
+          <% elsif company_signed_in? %>
+            <%= form_with(url: company_search_path, local: true, method: :get, class: "search-form") do |f| %>
+              <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+              <%= f.select 'search[model]', options_for_select({ "user" => "user", "PF" => "portfolio" }) %>
+              <%= f.submit :"検索", class: "btn btn-success" %>
             <% end %>
           <% end %>
       </nav>
@@ -76,6 +82,15 @@
       </div>
       <%= yield %>
     </main>
+
+    <% if user_signed_in? %>
+    <div>
+      <div></div>
+      <div class="fixed-bottom mb-4 mr-3 d-flex justify-content-end">
+      <%= link_to '', new_portfolio_path, class: "fas fa-plus-circle fa-3x" %>
+      </div>
+    </div>
+    <% end %>
 
     <footer class="fixed-bottom">
       <div class="d-flex align-items-center justify-content-center">

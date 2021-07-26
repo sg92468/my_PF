@@ -5,7 +5,7 @@ class Company < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :follow_requests, dependent: :destroy
-  def already_requested?(user)
+  def already_requested?(user) #フォローリクエストの確認
     self.follow_requests.exists?(user_id: user.id)
   end
   has_many :follow_companies, dependent: :destroy

@@ -1,8 +1,4 @@
 class Public::UsersController < ApplicationController
-  def index
-    @user = User.all
-  end
-
   def show
     @user = User.find(params[:id])
     @portfolios = @user.portfolios.page(params[:page]).per(5).reverse_order
