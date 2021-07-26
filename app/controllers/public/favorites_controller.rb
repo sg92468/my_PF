@@ -1,17 +1,20 @@
 class Public::FavoritesController < ApplicationController
   before_action :authenticate_user!
+  before_action :portfolio_params
+
 
   def create
-    portfolio = Portfolio.find(params[:portfolio_id])
-    favorite = current_user.favorites.new(portfolio_id: portfolio.id)
-    favorite.save
-    redirect_to portfolio_path(portfolio)
+    Favorite.create(user_id: current_user.id, portfolio_id: @portfolio.id)
   end
 
   def destroy
-    portfolio = Portfolio.find(params[:portfolio_id])
-    favorite = current_user.favorites.find_by(portfolio_id: portfolio.id)
-    favorite.destroy
-    redirect_to portfolio_path(portfolio)
+    Favorite.find_by(user_id: current_user.id, portfolio_id: @portfolio.id).destroy
   end
+
+  private
+
+  def portfolio_params
+    @portfolio = Portfolio.find(params[:portfolio_id])
+  end
+
 end

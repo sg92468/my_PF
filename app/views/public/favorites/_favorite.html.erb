@@ -1,0 +1,9 @@
+<% if portfolio.favorited_by?(current_user) %>
+  <%= link_to portfolio_favorites_path(portfolio), method: :delete, remote: true, class: "text-danger" do %>
+    ♥<%= portfolio.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to portfolio_favorites_path(portfolio), method: :post, remote: true do %>
+    ♡<%= portfolio.favorites.count %>
+  <% end %>
+<% end %>

@@ -1,0 +1,21 @@
+<% comments.each do |portfolio_comment| %>
+<div class="col-12 bg-light my-1 d-flex rounded">
+  <div class="col-10">
+    <div class="col">
+    <%= attachment_image_tag(portfolio_comment.user, :image, size: "40x30", fallback: "no_image_person.jpg", class: "rounded") %>
+    <%= portfolio_comment.user.name %>
+    　日時：<%= portfolio_comment.created_at.strftime('%Y/%m/%d') %>
+    </div>
+    <div class="col bg-white mb-1">
+    <%= portfolio_comment.comment %>
+    </div>
+  </div>
+  <% if portfolio_comment.user == current_user %>
+  <div class="col-2 d-flex align-items-center">
+    <%= link_to "削除", portfolio_comment_path(portfolio_comment.portfolio, portfolio_comment), method: :delete, remote: true, class: "btn btn-danger" %>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>
+<div class="d-flex justify-content-center"><%= paginate(comments) %></div>

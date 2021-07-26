@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
   <div class="row">
     <div class="col-sm-12 d-block justify-content-center mt-3 mb-5">
       <h2>ポートフォリオ検索結果</h2>
@@ -31,7 +31,7 @@
         <% end %>
       </div>
     </div>
-    <div class="d-flex justify-content-center"><%= paginate(@portfolios) %></div>
+    <div class="mx-auto"><%= paginate(@portfolios) %></div>
     <div class="col-md-12" >
       <%= link_to '', new_portfolio_path, class: "fas fa-plus-circle fa-3x add-item fixed-bottom mb-4 mr-3 text-right" %>
     </div>
