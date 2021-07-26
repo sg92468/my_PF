@@ -21,7 +21,7 @@ class Public::PortfoliosController < ApplicationController
 
   def show
     @portfolio = Portfolio.find(params[:id])
-    @comments = @portfolio.comments.page(params[:page]).per(5).reverse_order
+    @comments = @portfolio.comments.page(params[:page]).per(5).reverse_order #コメント一覧データ取り出し
     @comment = Comment.new
   end
 
@@ -47,7 +47,7 @@ class Public::PortfoliosController < ApplicationController
   def search
     @portfolios = Portfolio.search(params[:keyword]).page(params[:page]).per(10).reverse_order
   end
-
+  
   private
 
   def portfolio_params

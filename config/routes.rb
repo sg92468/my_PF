@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show] do
       resource :follow_requests, only: [:create, :destroy]
     end
-    resources :portfolios, only: [:index, :show, :search]
+    resources :portfolios, only: [:index, :show]
     get '/search' => 'searches#search', as: 'search'
   end
 

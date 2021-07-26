@@ -6,14 +6,13 @@ class Public::CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.portfolio_id = portfolio.id
     comment.save
-
-    @comments = portfolio.comments.page(params[:page]).per(5).reverse_order
+    @comments = portfolio.comments.page(params[:page]).per(5).reverse_order #非同期のため、コメント一覧データ取出し
   end
 
   def destroy
     Comment.find_by(id: params[:id], portfolio_id: params[:portfolio_id]).destroy
-    @portfolio = Portfolio.find(params[:portfolio_id])
-    @comments = @portfolio.comments.page(params[:page]).per(5).reverse_order
+    @portfolio = Portfolio.find(params[:portfolio_id]) #非同期のため、PFデータ取出し
+    @comments = @portfolio.comments.page(params[:page]).per(5).reverse_order #非同期のため、コメント一覧データ取出し
   end
 
   private
