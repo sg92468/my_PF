@@ -12,12 +12,11 @@ class Company::CompaniesController < ApplicationController
   def update
     @company = Company.find(params[:id])
     if @company.update(company_params)
-      redirect_to company_company_path(@company) #企業詳細画面にリダイレクト
+      redirect_to company_company_path(@company) # 企業詳細画面にリダイレクト
     else
       render 'edit'
     end
   end
-
 
   private
 

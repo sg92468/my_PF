@@ -30,5 +30,4 @@ class PortfoliosControllerTest < ActionDispatch::IntegrationTest
     get portfolios_destroy_url
     assert_response :success
   end
-
 end

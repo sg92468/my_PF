@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-
   devise_for :companies, :controllers => {
-    :sessions => 'companies/sessions'
+    :sessions => 'companies/sessions',
   }
 
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
-    :sessions => 'users/sessions'
+    :sessions => 'users/sessions',
   }
 
   scope module: :public do
@@ -38,6 +37,4 @@ Rails.application.routes.draw do
     resources :portfolios, only: [:index, :show]
     get '/search' => 'searches#search', as: 'search'
   end
-
-
 end

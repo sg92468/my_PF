@@ -8,7 +8,6 @@ class Portfolio < ApplicationRecord
   belongs_to_active_hash :genre
   attachment :image
 
-
   validates :name, presence: true
   validates :github_url, presence: true
   validates :use_language, presence: true
@@ -26,5 +25,4 @@ class Portfolio < ApplicationRecord
       Portfolio.includes(:user).order('created_at DESC')
     end
   end
-
 end

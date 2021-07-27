@@ -5,20 +5,19 @@ class Company < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :follow_requests, dependent: :destroy
-  def already_requested?(user) #フォローリクエストの確認
-    self.follow_requests.exists?(user_id: user.id)
+  def already_requested?(user) # フォローリクエストの確認
+    follow_requests.exists?(user_id: user.id)
   end
   has_many :follow_companies, dependent: :destroy
 
   # 半角数字でマッチさせるバリデーション
-  NUMBER_REGEXP = /\A[0-9]+\z/
+  NUMBER_REGEXP = /\A[0-9]+\z/.freeze
 
   validates :name, presence: true
   validates :website, presence: true
   validates :phone_number, presence: true, format: { with: NUMBER_REGEXP }
 
   def already_followed?(user)
-    self.follow_companies.exists?(user_id: user.id)
+    follow_companies.exists?(user_id: user.id)
   end
-
 end

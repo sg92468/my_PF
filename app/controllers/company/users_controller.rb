@@ -1,6 +1,6 @@
 class Company::UsersController < ApplicationController
   before_action :authenticate_company!
-  
+
   def index
     @users = User.page(params[:page]).per(10).reverse_order
   end
