@@ -3,7 +3,7 @@
     <h2>マイページ</h2>
     <%= link_to "編集", edit_user_path(@user), class: "btn btn-success col-1 ml-5" %>
     <div class="col-sm-12 d-flex">
-      <div class="col-sm-12 col-md-4 mb-5">
+      <div class="col-sm-12 col-md-5 mb-5">
         <div class="col-12">
           <%= attachment_image_tag(@user, :image, format: "jpeg", size: "200x150", fallback: "no_image_person.jpg", class: "rounded my-2 text-center") %>
           <table class="table">
@@ -14,7 +14,7 @@
             <% if @user == current_user %>
             <tr>
               <th class="table-active">住所</th>
-              <td class="align-middle">〒<%= @user.postal_code %>　<%= @user.address %></td>
+              <td class="align-middle">〒<%= @user.postal_code %>　<%= truncate(@user.address, length: 20) %></td>
             </tr>
             <tr>
               <th class="table-active">電話番号</th>
@@ -27,11 +27,11 @@
             <% end %>
             <tr>
               <th class="table-active">習得言語</th>
-              <td class="align-middle"><%= @user.available_language %></td>
+              <td class="align-middle"><%= truncate(@user.available_language, length: 30) %></td>
             </tr>
             <tr>
               <th class="table-active">自己紹介</th>
-              <td class="align-middle"><%= @user.information %></td>
+              <td class="align-middle"><%= truncate(@user.information, length: 20) %></td>
             </tr>
           </table>
           <%= link_to "いいねしたPF一覧", "#{@user.id}/favorites", class: "btn btn-outline-success col-12" %>
@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-8">
+      <div class="col-sm-12 col-md-7">
         <table class="table">
           <thead>
             <th class="text-center">PF名</th>
@@ -54,7 +54,7 @@
               <td class="text-center"><%= link_to portfolio.name, portfolio_path(portfolio) %></td>
               <td class="text-center"><%= portfolio.use_language %></td>
               <td class="text-center"><%= portfolio.genre.name %></td>
-              <td class="text-center"><%= link_to portfolio.site_url, "#{portfolio.site_url}" %></td>
+              <td class="text-center"><%= link_to truncate(portfolio.site_url, length: 20), "#{portfolio.site_url}" %></td>
             </tr>
           <% end %>
           </tbody>

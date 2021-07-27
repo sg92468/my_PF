@@ -3,6 +3,7 @@ class Portfolio < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  # モデルを作成せず、ジャンルを設定している
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :genre
   attachment :image
@@ -17,9 +18,10 @@ class Portfolio < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  # 検索時に使用する定義。名前と習得言語で検索できるようにしている
   def self.search(search)
     if search != ""
-      Portfolio.where(['name LIKE(?) OR genre_id LIKE(?) OR use_language LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])
+      Portfolio.where(['name LIKE(?) OR use_language LIKE(?)', "%#{search}%", "%#{search}%"])
     else
       Portfolio.includes(:user).order('created_at DESC')
     end

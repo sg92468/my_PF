@@ -2,6 +2,22 @@
   <div class="row">
     <div class="col-sm-10 d-block justify-content-center mx-auto mb-5 mt-3">
       <h2>マイページ編集画面</h2>
+      <% if @user.errors.any? %>
+        <div class = "alert col rounded border bg-light">
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <!--サインアップ後にのみ説明文章を表示するため以下の記述作成-->
+      <!--path[:controller]で遷移元コントローラーを、path[:action]でアクションを取得-->
+　    <% if @path[:controller] == "users/registrations" && @path[:action] == "new" %>
+　    <div class="col rounded bg-info">
+　      <h5>郵便番号以降の登録は任意です。企業からのマッチングを希望の場合は入力を推奨します。</h5>
+　    </div>
+　    <% end %>
       <div class="col-12 d-flex justify-content-center mt-3">
         <%= form_with model:@user, local:true do |f| %>
         <table class="table">

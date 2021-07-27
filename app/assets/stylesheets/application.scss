@@ -31,3 +31,28 @@
  background-size: cover;
 }
 
+
+ .card-img {
+  height: 200px;
+ }
+
+
+ .card-deck {
+  height: 400px;
+ }
+
+ .card {
+  border: 1px solid #ddd;
+  height: 400px;
+  margin: 20px auto 0;
+  transition-duration: 0.5s;
+  cursor: pointer;
+ }
+
+ .card:hover{
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  transform: translateY(-10px);
+  transition-duration: 0.5s;
+ }
+
+

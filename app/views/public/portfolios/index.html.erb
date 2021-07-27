@@ -3,28 +3,7 @@
     <div class="col-sm-12 d-block justify-content-center mt-3 mb-5">
       <h2>PF 一覧</h2>
       <div class="col-12">
-        <table class="table mt-3">
-          <thead>
-            <th class="text-center">PF名</th>
-            <th class="text-center">使用言語</th>
-            <th class="text-center">ジャンル</th>
-            <th class="text-center">サイトURL</th>
-            <th class="text-center">いいね</th>
-            <th class="text-center">コメント</th>
-          </thead>
-          <tbody>
-          <% @portfolios.each do |portfolio| %>
-            <tr>
-              <td class="text-center"><%= link_to portfolio.name, portfolio_path(portfolio.id) %></td>
-              <td class="text-center"><%= portfolio.use_language %></td>
-              <td class="text-center"><%= portfolio.genre.name %></td>
-              <td class="text-center"><%= link_to portfolio.site_url, "#{portfolio.site_url}" %></td>
-              <td class="text-center"><%= portfolio.favorites.count %></td>
-              <td class="text-center"><%= portfolio.comments.count %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+        <%= render 'public/portfolios/index', portfolios: @portfolios %>
       </div>
     </div>
     <div class="mx-auto"><%= paginate(@portfolios) %></div>

@@ -1,3 +1,9 @@
 // Place all the styles related to the Portfolios controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+ .image-photo {
+  max-height: 200px;
+  object-fit: cover;
+ }
