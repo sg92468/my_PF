@@ -15,13 +15,12 @@ class User < ApplicationRecord
 
   # 全角カタカナと長音符を防ぐバリデーション
   KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
-  # 半角数字でマッチさせるバリデーション
-  NUMBER_REGEXP = /\A[0-9]+\z/
 
-  # validates :kana_name, format: { with: KATAKANA_REGEXP }
-  # validates :email, presence: true, uniqueness: true
-  # validates :postal_code, format: { with: NUMBER_REGEXP }
-  # validates :phone_number, format: { with: NUMBER_REGEXP }
+  validates :name, presence: true
+  validates :kana_name, format: { with: KATAKANA_REGEXP }
+  validates :email, presence: true, uniqueness: true
+  
+  # 検索時に使用する定義。名前と習得言語で検索できるようにしている
   def self.search(search)
     if search != ""
       User.where(['name LIKE(?) OR available_language LIKE(?)', "%#{search}%", "%#{search}%"])

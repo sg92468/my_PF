@@ -1,0 +1,26 @@
+<% portfolios.each do |portfolio| %>
+  <div class="card-deck d-inline-flex col-md-4 col-xs-6 mt-3">
+    <div class="card border-0">
+      <div class="card-img">
+        <%= link_to attachment_image_tag(portfolio, :image, format: "jpeg", fallback: "no_image_photo.jpg", class: "rounded col-12 align-item-start d-flex image-photo"), portfolio_path(portfolio.id) %>
+      </div>
+      <div class="card-body">
+        <p class="card-title">
+          PF名: <%= portfolio.name %>
+          </br>
+          使用言語: <%= portfolio.use_language %>
+          </br>
+          ジャンル: <%= portfolio.genre.name %>
+          </br>
+          サイト: <%= link_to truncate(portfolio.site_url, length: 20), "#{portfolio.site_url}" %>
+          </br>
+          いいね: <%= portfolio.favorites.count %>
+          </br>
+          コメント: <%= portfolio.comments.count %>
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+

@@ -2,7 +2,7 @@ class Company::PortfoliosController < ApplicationController
   before_action :authenticate_company!
 
   def index
-    @portfolios = Portfolio.page(params[:page]).per(10).reverse_order
+    @portfolios = Portfolio.page(params[:page]).per(12).reverse_order
   end
 
   def show

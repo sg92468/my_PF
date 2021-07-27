@@ -5,4 +5,5 @@ class Genre < ActiveHash::Base
       {id: 7, name: '位置情報'}, {id: 8, name: '写真'}, {id: 9, name: 'ＥＣ'},
       {id: 10, name: 'ニュース'}, {id: 11, name: 'その他'}
   ]
+  # dbに保存せず、上記のデータを取り出し可能。
 end
