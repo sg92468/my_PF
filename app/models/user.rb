@@ -14,12 +14,12 @@ class User < ApplicationRecord
   attachment :image
 
   # 全角カタカナと長音符を防ぐバリデーション
-  KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
+  KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/.freeze
 
   validates :name, presence: true
   validates :kana_name, format: { with: KATAKANA_REGEXP }
   validates :email, presence: true, uniqueness: true
-  
+
   # 検索時に使用する定義。名前と習得言語で検索できるようにしている
   def self.search(search)
     if search != ""
@@ -28,5 +28,4 @@ class User < ApplicationRecord
       User.all
     end
   end
-
 end

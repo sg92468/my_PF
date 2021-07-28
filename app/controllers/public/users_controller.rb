@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @path = Rails.application.routes.recognize_path(request.referer) #サインアップ後にのみ説明文章を表示するため定義
+    @path = Rails.application.routes.recognize_path(request.referer) # サインアップ後にのみ説明文章を表示するため定義
     @user = User.find(params[:id])
   end
 

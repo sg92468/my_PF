@@ -15,7 +15,7 @@
       <!--path[:controller]で遷移元コントローラーを、path[:action]でアクションを取得-->
 　    <% if @path[:controller] == "users/registrations" && @path[:action] == "new" %>
 　    <div class="col rounded bg-info">
-　      <h5>郵便番号以降の登録は任意です。企業からのマッチングを希望の場合は入力を推奨します。</h5>
+　      <h5>郵便番号以降の登録は任意です。他ユーザー/フォローのない企業からは郵便番号/住所/電話番号は確認できません。企業からのマッチングを希望の場合は入力を推奨します。</h5>
 　    </div>
 　    <% end %>
       <div class="col-12 d-flex justify-content-center mt-3">

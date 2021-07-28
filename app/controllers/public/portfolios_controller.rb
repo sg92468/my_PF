@@ -21,7 +21,7 @@ class Public::PortfoliosController < ApplicationController
 
   def show
     @portfolio = Portfolio.find(params[:id])
-    @comments = @portfolio.comments.page(params[:page]).per(5).reverse_order #コメント一覧データ取り出し
+    @comments = @portfolio.comments.page(params[:page]).per(5).reverse_order # コメント一覧データ取り出し
     @comment = Comment.new
   end
 
@@ -51,7 +51,14 @@ class Public::PortfoliosController < ApplicationController
   private
 
   def portfolio_params
-    params.require(:portfolio).permit(:image, :name, :information, :site_url, :github_url, :use_language, :genre_id)
+    params.require(:portfolio).permit(
+      :image,
+      :name,
+      :information,
+      :site_url,
+      :github_url,
+      :use_language,
+      :genre_id
+      )
   end
-
 end

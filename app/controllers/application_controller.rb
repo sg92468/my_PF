@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #ログアウト後のリダイレクト先
+  # ログアウト後のリダイレクト先
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :user
       new_user_session_path
@@ -22,11 +22,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :kana_name])
   end
-
 end
