@@ -20,8 +20,11 @@ PFを作成する際に既存のPFを参考に検討しようと思ったが、�
 ### 主な利用シーン
 人材の検索やエンジニア同士の交流
 
-## 設計書
+## ER図
+![スクリーンショット 2021-07-29 17 03 14](https://user-images.githubusercontent.com/81888036/127455062-4ff6c0e1-796a-4daf-acbe-b626dd954464.png)
 
+## db設計書
+<https://drive.google.com/file/d/1_syMJresKTRzRyywst83JlufAUp2B594/view?usp=sharing>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1VwL7AzulGVEFJbwVLpJy1N-FHnSDR-VHE2jz8kmeHlI/edit?usp=sharing>
