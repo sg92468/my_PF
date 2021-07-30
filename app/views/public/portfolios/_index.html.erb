@@ -1,7 +1,7 @@
 <% portfolios.each do |portfolio| %>
   <div class="card-deck d-inline-flex col-md-4 col-xs-6 mt-3">
-    <div class="card border-0">
-      <div class="card-img">
+    <div class="card border">
+      <div class="card-img mt-2">
         <%= link_to attachment_image_tag(portfolio, :image, format: "jpeg", fallback: "no_image_photo.jpg", class: "rounded col-12 align-item-start d-flex image-photo"), portfolio_path(portfolio.id) %>
       </div>
       <div class="card-body">

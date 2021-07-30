@@ -5,7 +5,6 @@ describe '[STEP1] ユーザログイン前のテスト' do
     before do
       visit root_path
     end
-
     content '表示内容の確認' do
       it 'URLが正しい' do
         expect(current_path).to eq '/'
@@ -33,7 +32,6 @@ describe '[STEP1] ユーザログイン前のテスト' do
     before do
       visit '/about'
     end
-
     context '表示内容の確認' do
       it 'URLが正しい' do
         expect(current_path).to eq '/about'
@@ -45,7 +43,6 @@ describe '[STEP1] ユーザログイン前のテスト' do
     before do
       visit root_path
     end
-
     context '表示内容の確認' do
       it 'Homeリンクが表示される: 左上から1番目のリンクが「Home」である' do
         home_link = find_all('a')[1].native.inner_text
@@ -64,10 +61,8 @@ describe '[STEP1] ユーザログイン前のテスト' do
         expect(login_link).to match(/login/i)
       end
     end
-
     context 'リンクの内容を確認' do
       subject { current_path }
-
       it 'Homeを押すと、トップ画面に遷移する' do
         home_link = find_all('a')[1].native.inner_text
         home_link = home_link.delete(' ')
@@ -100,7 +95,6 @@ describe '[STEP1] ユーザログイン前のテスト' do
     before do
       visit new_user_registration_path
     end
-
     context '表示内容の確認' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/sign_up'
@@ -124,7 +118,6 @@ describe '[STEP1] ユーザログイン前のテスト' do
         expect(page).to have_button 'Sign up'
       end
     end
-
     context '新規登録成功のテスト' do
       before do
         fill_in 'user[name]', with: Faker::Lorem.characters(number: 10)
@@ -132,7 +125,6 @@ describe '[STEP1] ユーザログイン前のテスト' do
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
       end
-
       it '正しく新規登録される' do
         expect { click_button 'Sign up' }.to change(User.all, :count).by(1)
       end
@@ -142,5 +134,4 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
     end
   end
-  
 end
