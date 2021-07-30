@@ -43,6 +43,9 @@
               </li>
             <% else %>
               <li class="d-flex justify-content-end nav-item mr-5 font-weight-bold">
+                <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+              </li>
+              <li class="d-flex justify-content-end nav-item mr-5 font-weight-bold">
                 <%= link_to "アバウト", about_path, class: 'nav-link' %>
               </li>
               <li class="d-flex justify-content-end nav-item mr-5 font-weight-bold">
