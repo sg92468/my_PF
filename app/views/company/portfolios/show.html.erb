@@ -52,6 +52,7 @@
                   <%= attachment_image_tag(portfolio_comment.user, :image, size: "40x30", fallback: "no_image_person.jpg", class: "rounded") %>
                   <%= portfolio_comment.user.name %>
                   　日時：<%= portfolio_comment.created_at.strftime('%Y/%m/%d') %>
+                  　コメントの感情分析スコア<%= portfolio_comment.score %>
                   </div>
                   <div class="col bg-white mb-1">
                   <%= portfolio_comment.comment %>
