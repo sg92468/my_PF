@@ -29,7 +29,6 @@ Rails.application.routes.draw do
       resources :follow_requests, only: [:index, :show, :destroy]
     end
     get "users/:id/favorites" => "users#favorites"
-
     resources :companies, only: [:show]
   end
 
