@@ -25,6 +25,8 @@ Rails.application.routes.draw do
       post '/follow_requests/:id' => 'follow_requests#allow', as: 'allow'
       resources :follow_requests, only: [:index, :show, :destroy]
     end
+    resources :messages, only: [:create]
+    resources :rooms, only: [:create, :]
     get "users/:id/favorites" => "users#favorites"
     resources :companies, only: [:show]
   end
