@@ -2,12 +2,10 @@ Rails.application.routes.draw do
   devise_for :companies, :controllers => {
     :sessions => 'companies/sessions',
   }
-
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions',
   }
-
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
@@ -22,14 +20,12 @@ Rails.application.routes.draw do
         get 'search'
       end
     end
-
     resources :users, only: [:show, :edit, :update] do
       resources :follow_companies, only: [:destroy, :show, :index]
       post '/follow_requests/:id' => 'follow_requests#allow', as: 'allow'
       resources :follow_requests, only: [:index, :show, :destroy]
     end
     get "users/:id/favorites" => "users#favorites"
-
     resources :companies, only: [:show]
   end
 

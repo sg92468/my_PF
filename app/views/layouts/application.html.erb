@@ -72,16 +72,16 @@
     </header>
     <main>
       <div class="col-lg-10 mx-auto">
-        <% if flash[:notice] %>
+      <% if flash[:notice] %>
         <div class="alert alert-info">
-          <%= flash[:notice] %>
+        <%= flash[:notice] %>
         </div>
-        <% end %>
-        <% if flash[:alert] %>
+      <% end %>
+      <% if flash[:alert] %>
         <div class="alert alert-danger">
-          <%= flash[:alert] %>
+        <%= flash[:alert] %>
         </div>
-        <% end %>
+      <% end %>
       </div>
       <%= yield %>
     </main>
