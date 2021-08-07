@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       resources :follow_requests, only: [:index, :show, :destroy]
     end
     resources :messages, only: [:create]
-    resources :rooms, only: [:create, :]
+    resources :rooms, only: [:create, :show]
     get "users/:id/favorites" => "users#favorites"
     resources :companies, only: [:show]
   end
