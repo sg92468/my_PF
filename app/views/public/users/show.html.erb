@@ -37,20 +37,6 @@
           <%= link_to "いいねしたPF一覧", "#{@user.id}/favorites", class: "btn btn-outline-success col-12" %>
           <%= link_to "フォローリクエスト一覧", "#{@user.id}/follow_requests", class: "btn btn-outline-success col-12 mt-1" %>
           <%= link_to "フォロー一覧", "#{@user.id}/follow_companies", class: "btn btn-outline-success col-12 mt-1" %>
-          <% unless @user.id == current_user.id %>
-            <% if (current_user.followed_by? @user) && (@user.followed_by? current_user)  %>
-            <% if @isRoom == true %>
-              <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
-            <% else %>
-              <%= form_for @room do |f| %>
-                <%= fields_for @entry do |e| %>
-                  <%= e.hidden_field :user_id, value: @user.id %>
-                <% end %>
-                <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
-              <% end %>
-            <% end %>
-            <% end %>
-          <% end %>
         </div>
       </div>
 

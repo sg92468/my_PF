@@ -24,7 +24,18 @@
           </table>
         </div>
       </div>
-
+      <% if @company.already_followed?(current_user)  %>
+      <% if @isRoom == true %>
+        <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+      <% else %>
+        <%= form_with model:@room, local:true do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :company_id, value: @company.id %>
+          <% end %>
+          <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+        <% end %>
+      <% end %>
+      <% end %>
     </div>
   </div>
 </div>
