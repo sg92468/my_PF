@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_08_06_130810) do
     t.integer "user_id", null: false
     t.integer "room_id", null: false
     t.integer "company_id", null: false
+    t.boolean "is_user", default: true
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -89,6 +90,8 @@ ActiveRecord::Schema.define(version: 2021_08_06_130810) do
   end
 
   create_table "rooms", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
