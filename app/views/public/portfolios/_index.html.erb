@@ -7,15 +7,15 @@
       <div class="card-body">
         <p class="card-title">
           PF名: <%= portfolio.name %>
-          </br>
+          <br/>
           使用言語: <%= portfolio.use_language %>
-          </br>
+          <br/>
           ジャンル: <%= portfolio.genre.name %>
-          </br>
-          サイト: <%= link_to truncate(portfolio.site_url, length: 20), "#{portfolio.site_url}" %>
-          </br>
+          <br/>
+          サイト: <%= link_to truncate(portfolio.site_url, length: 20), "#{portfolio.site_url}", target: :_blank %>
+          <br/>
           いいね: <%= portfolio.favorites.count %>
-          </br>
+          <br/>
           コメント: <%= portfolio.comments.count %>
         </p>
       </div>
