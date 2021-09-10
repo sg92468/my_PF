@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :follow_requests, dependent: :destroy
   has_many :follow_companys, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   attachment :image
 

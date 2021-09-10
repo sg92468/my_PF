@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @portfolios = @user.portfolios.page(params[:page]).per(5).reverse_order
+
   end
 
   def edit

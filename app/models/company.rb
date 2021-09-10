@@ -9,6 +9,8 @@ class Company < ApplicationRecord
     follow_requests.exists?(user_id: user.id)
   end
   has_many :follow_companies, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   # 半角数字でマッチさせるバリデーション
   NUMBER_REGEXP = /\A[0-9]+\z/.freeze

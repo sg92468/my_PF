@@ -54,7 +54,7 @@
               <td class="text-center"><%= link_to portfolio.name, portfolio_path(portfolio) %></td>
               <td class="text-center"><%= portfolio.use_language %></td>
               <td class="text-center"><%= portfolio.genre.name %></td>
-              <td class="text-center"><%= link_to truncate(portfolio.site_url, length: 20), "#{portfolio.site_url}" %></td>
+              <td class="text-center"><%= link_to truncate(portfolio.site_url, length: 20), "#{portfolio.site_url}", target: :_blank %></td>
             </tr>
           <% end %>
           </tbody>

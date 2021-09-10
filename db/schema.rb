@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_01_092906) do
+ActiveRecord::Schema.define(version: 2021_08_06_130810) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 2021_08_01_092906) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.integer "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "portfolio_id", null: false
@@ -58,6 +66,16 @@ ActiveRecord::Schema.define(version: 2021_08_01_092906) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.integer "company_id", null: false
+    t.boolean "is_user", default: true
+    t.text "message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "portfolios", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name", null: false
@@ -67,6 +85,13 @@ ActiveRecord::Schema.define(version: 2021_08_01_092906) do
     t.string "use_language", null: false
     t.integer "genre_id", null: false
     t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
