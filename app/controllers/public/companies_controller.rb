@@ -1,17 +1,9 @@
 class Public::CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
-    @currentUserEntry = Entry.where(user_id: current_user.id)
-    @companyEntry = Entry.where(company_id: @company.id)
-    @currentUserEntry.each do |cu|
-      @companyEntry.each do |u|
-        if cu.room_id == u.room_id then
-          @isRoom = true
-          @roomId = cu.room_id
-        end
-      end
-    end
-    if @isRoom
+    @room_exist = Room.where(user_id: current_user.id, company_id: @company.id)
+    if @room_exist.present?
+      @room = Room.find_by(user_id: current_user.id, company_id: @company.id)
     else
       @room = Room.new
       @entry = Entry.new

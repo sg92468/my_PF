@@ -25,8 +25,8 @@
         </div>
       </div>
       <% if @company.already_followed?(current_user)  %>
-      <% if @isRoom == true %>
-        <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+      <% if @room_exist.present? %>
+        <p class="user-show-room"><a href="/rooms/<%= @room.id %>" class="btn btn-primary btn-lg">チャットへ</a>
       <% else %>
         <%= form_with model:@room, local:true do |f| %>
             <%= f.hidden_field :user_id, value: current_user.id %>

@@ -1,4 +1,4 @@
-<h4 class="rooms-title">気になる同士</h4>
+<h4 class="rooms-title">チャットルーム</h4>
 <% @entries.each do |e| %>
   <div class="user-name">
   <strong>
@@ -17,18 +17,15 @@
       <% if m.is_user == true %>
         <div class="chat-box">
           <div class="chat-face">
-            <%= image_tag m.user.image, class:"user-image" %>
+            <%= attachment_image_tag(m.user, :image, format: "jpeg", size: "40x30", fallback: "no_image_person.jpg", class:"user-image") %>
           </div>
-          <div class="chat-hukidashi"> <strong><%= m.content %></strong> <br>
+          <div class="chat-hukidashi"> <strong><%= m.message %></strong> <br>
             <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
           </div>
         </div>
       <% elsif m.is_user == false %>
         <div class="chat-box">
-          <div class="chat-face">
-            <%= image_tag m.company.image, class:"user-image" %>
-          </div>
-          <div class="chat-hukidashi"> <strong><%= m.content %></strong> <br>
+          <div class="chat-hukidashi"> <strong><%= m.message %></strong> <br>
             <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
           </div>
         </div>
